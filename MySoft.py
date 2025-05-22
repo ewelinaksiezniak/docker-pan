@@ -118,8 +118,9 @@ def main(args):
 
     for difficulty in ['easy', 'medium', 'hard']:
         input_dir = os.path.join(args.input, difficulty)
-        output_dir = os.path.join(args.output, difficulty)
-        os.makedirs(output_dir, exist_ok=True)
+        # output_dir = os.path.join(args.output, difficulty)
+        # os.makedirs(output_dir, exist_ok=True)
+        output_dir = args.output
 
         files_list = glob.glob(f'{input_dir}/**/*.txt', recursive=True)
         print(f'[{difficulty}] Znaleziono {len(files_list)} plików.')
