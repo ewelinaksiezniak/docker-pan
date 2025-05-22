@@ -101,14 +101,33 @@ def predict_pairs(model, dataset, device):
             preds.extend(torch.argmax(logits, dim=1).cpu().tolist())
     return preds
 
+# def main(args):
+#     print("📁 ZAWARTOŚĆ args.input:", args.input)
+#     for root, dirs, files in os.walk(args.input):
+#         print(f"📂 {root}")
+#         for name in files:
+#             print("    └──", name)
+#         for name in dirs:
+#             print("    📁", name)
 def main(args):
-    print("📁 ZAWARTOŚĆ args.input:", args.input)
+    print(f"\n📥 DEBUG: ZAWARTOŚĆ args.input: {args.input}")
+    
+    if not os.path.exists(args.input):
+        print("❌ Katalog wejściowy NIE ISTNIEJE.")
+        return
+
+    found_any = False
     for root, dirs, files in os.walk(args.input):
         print(f"📂 {root}")
-        for name in files:
-            print("    └──", name)
         for name in dirs:
-            print("    📁", name)
+            print(f"  📁 {name}")
+        for name in files:
+            print(f"  📄 {name}")
+            found_any = True
+
+    if not found_any:
+        print("⚠️ Brak jakichkolwiek plików w katalogu wejściowym.")
+
 
 
     model_dirs = {
