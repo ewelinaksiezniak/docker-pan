@@ -149,14 +149,26 @@ def main(args):
         del model
         torch.cuda.empty_cache()
 
+# if __name__ == '__main__':
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument("-i", "--input", default="../pan24_dataset/test", type=str)
+#     parser.add_argument("-o", "--output", default="../pan24_dataset/test", type=str)
+#     parser.add_argument("--batch_size", default=16, type=int)
+#     parser.add_argument("--device", default="cuda:0", type=str)
+#     parser.add_argument("-e", "--enrich", action='store_true')
+#     args = parser.parse_args()
+#     args.device = args.device if torch.cuda.is_available() else "cpu"
+
+#     main(args)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--input", default="../pan24_dataset/test", type=str)
-    parser.add_argument("-o", "--output", default="../pan24_dataset/test", type=str)
+    parser.add_argument("input", type=str, help="Input directory")
+    parser.add_argument("output", type=str, help="Output directory")
     parser.add_argument("--batch_size", default=16, type=int)
     parser.add_argument("--device", default="cuda:0", type=str)
     parser.add_argument("-e", "--enrich", action='store_true')
     args = parser.parse_args()
-    args.device = args.device if torch.cuda.is_available() else "cpu"
 
+    args.device = args.device if torch.cuda.is_available() else "cpu"
     main(args)
