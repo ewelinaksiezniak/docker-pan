@@ -1,29 +1,4 @@
-# # Używamy oficjalnego obrazu Pythona jako bazowego
-# FROM python:3.10-slim
 
-# # Wyłącz interaktywne zapytania np. o lokalizację podczas instalacji pakietów
-# ENV DEBIAN_FRONTEND=noninteractive
-
-# # Instalacja zależności systemowych (jeśli potrzebne np. do torch, transformers)
-# RUN apt-get update && apt-get install -y \
-#     git \
-#     curl \
-#     unzip \
-#     && rm -rf /var/lib/apt/lists/*
-
-# # Ustaw katalog roboczy w kontenerze
-# WORKDIR /app
-
-# # Skopiuj pliki projektu do kontenera
-# #COPY . /app
-# COPY requirements.txt MySoft.py /app/
-
-# # Zainstaluj wymagane pakiety Pythona (upewnij się, że plik requirements.txt istnieje)
-# RUN pip install --upgrade pip
-# RUN pip install -r requirements.txt
-
-# # Punkt wejścia (można nadpisać przy docker run)
-# ENTRYPOINT ["python", "MySoft.py"]
 
 FROM python:3.10-slim
 
@@ -39,10 +14,17 @@ WORKDIR /app
 
 # Skopiuj kod + modele
 COPY requirements.txt MySoft.py /app/
-COPY models/ /app/models/
+
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN python -c 'from transformers import AutoTokenizer, AutoModel; AutoTokenizer.from_pretrained("FacebookAI/xlm-roberta-base"); AutoModel.from_pretrained("FacebookAI/xlm-roberta-base")'
+
+RUN python -c "\
+from huggingface_hub import snapshot_download; \
+snapshot_download(repo_id='Ewel/FacebookAI_xlm_roberta_base', local_dir='/app/models/FacebookAI_xlm_roberta_base', local_dir_use_symlinks=False); \
+snapshot_download(repo_id='Ewel/modeltrained_on_contrastive_encoder_10_epoch_quote_easy_freeze_0', local_dir='/app/models/modeltrained_on_contrastive_encoder_10_epoch_quote_easy_freeze_0', local_dir_use_symlinks=False); \
+snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_question_freeze_0', local_dir='/app/models/model_trained_on_contrastive_encoder_10_epoch_question_freeze_0', local_dir_use_symlinks=False); \
+snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_question_medium_freeze_2', local_dir='/app/models/model_trained_on_contrastive_encoder_10_epoch_question_medium_freeze_2', local_dir_use_symlinks=False)"
+
 
 ENTRYPOINT ["python", "MySoft.py"]
