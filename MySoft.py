@@ -122,7 +122,11 @@ def main(args):
         # os.makedirs(output_dir, exist_ok=True)
         output_dir = args.output
 
-        files_list = glob.glob(f'{input_dir}/**/*.txt', recursive=True)
+        # files_list = glob.glob(f'{input_dir}/**/*.txt', recursive=True)
+        os.makedirs(output_dir, exist_ok=True)
+
+        files_list = glob.glob(f"{args.input}/**/problem-*.txt", recursive=True)
+        print(f"🔍 Znaleziono {len(files_list)} plików .txt do przetworzenia.")
         print(f'[{difficulty}] Znaleziono {len(files_list)} plików.')
         print(f"[DEBUG] Pliki wejściowe dla {difficulty}:")
         for f in files_list:
