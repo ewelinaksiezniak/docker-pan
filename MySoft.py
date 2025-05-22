@@ -103,12 +103,12 @@ def predict_pairs(model, dataset, device):
 
 def main(args):
     print("📁 ZAWARTOŚĆ args.input:", args.input)
-        for root, dirs, files in os.walk(args.input):
-            print(f"📂 {root}")
-            for name in files:
-                print("    └──", name)
-            for name in dirs:
-                print("    📁", name)
+    for root, dirs, files in os.walk(args.input):
+        print(f"📂 {root}")
+        for name in files:
+            print("    └──", name)
+        for name in dirs:
+            print("    📁", name)
 
 
     model_dirs = {
