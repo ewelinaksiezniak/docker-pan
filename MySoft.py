@@ -124,7 +124,7 @@ def main(args):
             print("│", root)
             for name in files:
                 print("│   ├──", name)
-             for name in dirs:
+            for name in dirs:
                 print("│   └── 📁", name)
 
         # output_dir = os.path.join(args.output, difficulty)
