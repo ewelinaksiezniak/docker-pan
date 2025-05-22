@@ -37,5 +37,5 @@ jobs:
           tira-cli login --token ${{ secrets.TIRA_CLIENT_TOKEN }}
           tira-cli verify-installation
           # tira-cli code-submission --path ${{ inputs.directory }} --task multi-author-writing-style-analysis-2025
-          tira-cli code-submission --path ${{ inputs.directory }} --task multi-author-writing-style-analysis-2025 --dataset multi-author-writing-spot-check-20250503-training
+          tira-cli code-submission --path ${{ inputs.directory }} --task multi-author-writing-style-analysis-2025 --dataset multi-author-writing-style-analysis-2025/multi-author-writing-spot-check-20250503-training
 
