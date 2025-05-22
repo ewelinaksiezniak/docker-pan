@@ -27,4 +27,6 @@ snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_qu
 snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_question_medium_freeze_2', local_dir='/app/models/model_trained_on_contrastive_encoder_10_epoch_question_medium_freeze_2', local_dir_use_symlinks=False)"
 
 
-ENTRYPOINT ["python", "MySoft.py"]
+# ENTRYPOINT ["python", "MySoft.py"]
+ENTRYPOINT ["python", "MySoft.py", "/input", "/output"]
+
