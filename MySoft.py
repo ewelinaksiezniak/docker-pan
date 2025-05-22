@@ -188,8 +188,11 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("input", type=str, help="Input directory")
-    parser.add_argument("output", type=str, help="Output directory")
+    # parser.add_argument("input", type=str, help="Input directory")
+    # parser.add_argument("output", type=str, help="Output directory")
+    parser.add_argument("-i", "--input", type=str, required=True)
+    parser.add_argument("-o", "--output", type=str, required=True)
+
     parser.add_argument("--batch_size", default=16, type=int)
     parser.add_argument("--device", default="cuda:0", type=str)
     parser.add_argument("-e", "--enrich", action='store_true')
