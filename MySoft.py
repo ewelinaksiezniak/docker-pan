@@ -102,6 +102,7 @@ def predict_pairs(model, dataset, device):
     return preds
 
 def main(args):
+    print("📁 ZAWARTOŚĆ args.input:", args.input)
 
     model_dirs = {
         'easy':   "modeltrained_on_contrastive_encoder_10_epoch_quote_easy_freeze_0",
