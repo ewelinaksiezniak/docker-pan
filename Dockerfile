@@ -28,5 +28,7 @@ snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_qu
 
 
 # ENTRYPOINT ["python", "MySoft.py"]
-ENTRYPOINT ["python", "MySoft.py", "/input", "/output"]
+# ENTRYPOINT ["python", "MySoft.py", "/input", "/output"]
+ENTRYPOINT ["python", "MySoft.py", "--input", "/input", "--output", "/output"]
+
 
