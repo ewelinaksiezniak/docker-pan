@@ -172,3 +172,7 @@ if __name__ == '__main__':
 
     args.device = args.device if torch.cuda.is_available() else "cpu"
     main(args)
+    print("=== KONIEC ===")
+    print("Zawartość folderu wyjściowego:")
+    print(os.listdir(args.output))
+
