@@ -124,6 +124,10 @@ def main(args):
 
         files_list = glob.glob(f'{input_dir}/**/*.txt', recursive=True)
         print(f'[{difficulty}] Znaleziono {len(files_list)} plików.')
+        print(f"[DEBUG] Pliki wejściowe dla {difficulty}:")
+        for f in files_list:
+            print(" -", f)
+
 
         model_dir = local_model_path(model_dirs[difficulty])
         model = ClassificationModel(base_model_name=base_model_name)
