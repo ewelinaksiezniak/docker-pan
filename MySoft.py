@@ -131,7 +131,9 @@ def main(args):
         model.to(args.device)
 
         for file_path in tqdm(files_list):
-            share_id = os.path.basename(file_path)[8:-4]
+            # share_id = os.path.basename(file_path)[8:-4]
+            share_id = os.path.splitext(os.path.basename(file_path))[0].replace("problem-", "")
+
             paragraphs = load_paragraphs_from_file(file_path)
             pair_data = make_pairs(paragraphs)
             pair_df = pd.DataFrame(pair_data)
