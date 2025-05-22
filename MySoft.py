@@ -118,6 +118,15 @@ def main(args):
 
     for difficulty in ['easy', 'medium', 'hard']:
         input_dir = os.path.join(args.input, difficulty)
+        print("📁 ZAWARTOŚĆ args.input:", args.input)
+        print("├── zawartość folderu:")
+        for root, dirs, files in os.walk(args.input):
+            print("│", root)
+            for name in files:
+                print("│   ├──", name)
+             for name in dirs:
+                print("│   └── 📁", name)
+
         # output_dir = os.path.join(args.output, difficulty)
         # os.makedirs(output_dir, exist_ok=True)
         output_dir = args.output
