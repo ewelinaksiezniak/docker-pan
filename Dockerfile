@@ -26,9 +26,12 @@ snapshot_download(repo_id='Ewel/modeltrained_on_contrastive_encoder_10_epoch_quo
 snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_question_freeze_0', local_dir='/app/models/model_trained_on_contrastive_encoder_10_epoch_question_freeze_0', local_dir_use_symlinks=False); \
 snapshot_download(repo_id='Ewel/model_trained_on_contrastive_encoder_10_epoch_question_medium_freeze_2', local_dir='/app/models/model_trained_on_contrastive_encoder_10_epoch_question_medium_freeze_2', local_dir_use_symlinks=False)"
 
-ENTRYPOINT [ "python3", "/MySoft.py", "-i", "$inputDataset", "-o", "$outputDir" ]
+
+ENTRYPOINT python3 /MySoft.py -i "$inputDataset" -o "$outputDir"
+
+# ENTRYPOINT [ "python3", "/MySoft.py", "-i", "$inputDataset", "-o", "$outputDir" ]
 # ENTRYPOINT ["python", "MySoft.py"]
 # ENTRYPOINT ["python", "MySoft.py", "/input", "/output"]
-ENTRYPOINT ["python", "MySoft.py", "--input", "/input", "--output", "/output"]
+# ENTRYPOINT ["python", "MySoft.py", "--input", "/input", "--output", "/output"]
 
 
