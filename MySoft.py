@@ -207,8 +207,8 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    # parser.add_argument("input", type=str, help="Input directory")
-    # parser.add_argument("output", type=str, help="Output directory")
+    # parser.add_argument("input", default="../pan24_dataset/test", type=str, help="Input directory")
+    # parser.add_argument("output", default="../pan24_dataset/test", type=str, help="Output directory")
     parser.add_argument("-i", "--input", type=str, required=True)
     parser.add_argument("-o", "--output", type=str, required=True)
 
